@@ -12,7 +12,7 @@ Vamos criar um novo projeto na pasta `Projetos` utilizando o comando `cargo new 
 
 `Cargo` é o gerenciador de pacotes do Rust. O `Cargo` faz downloads das dependências, compila seus pacotes, cria pacotes distribuíveis e faz o upload deles para o `creates.io`, o registro de pacotes da comunidade Rust.
 
-- [] Task 1: Tipos de dados
+- [x] Task 1: Tipos de dados
 
 Vamos precisar de alguns tipos de dados para representar o nosso game. Em um jogo com dois jogadores e um tabuleiro, precisaremos representar:
 
