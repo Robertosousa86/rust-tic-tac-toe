@@ -70,3 +70,83 @@ impl<T: PartialEq> PartialEq for Foo<T> {
 - **Copy** e **Clone**
   \
   Diz ao compilador que ele é livre para copiar o tipo por todo lugar, isso significa que nós não precisaremos nos preocupar com a semântica de movimento por enquanto.
+
+- Enum
+  \
+  Em Rust, um `enum` é uma estrutura de dados que declara seus diferentes tipos. Um `enum` prove as mesmas funcionalidades de uma `struct`, mas utiliza menos código. Por exemplo, implementando diferentes tipos de `Maquina`, cada `maquina` tera tipos diferente de atributos e requerem diferentes `struct's` para cada `maquina`. Por outro lado, podemos incorporar todos esses diferentes tipos de `maquinas` em uma única `enum`:
+
+```rust
+struct Phone {}
+struct Adder {
+    x: i,
+    y: i,
+}
+struct Computer {
+    name: String,
+}
+```
+
+Além disso, não é possível criar uma função que possa receber qualquer tipo de `Maquina` como parâmetro usando `struct's`; nesse caso, `enum's` devem ser usados. Com um `enum`, o tipo de `maquina` pode ser identificado dentro da função usando a `pattern matching` com a palavra reservada `match`.
+
+```rust
+#![allow(unused_variables)]
+fn main() {
+    #[allow(dead_code)]
+    enum Machine {
+        Phone,
+        Adder(i8, i8),
+        Computer(String),
+}
+// A function taking any Machine as parameter:
+fn foo(m: Machine) {
+    match m {
+        Machine::Phone => println!("This is a phone"),
+        Machine::Adder(a, b) => println!("Sum: {}", a + b),
+        Machine::Computer(name) => println!("Name: {}", name),
+    }
+}
+
+let machine_1 = Machine::Phone;
+let machine_2 = Machine::Adder(3, 4);
+let machine_3 = Machine::Computer("Mainframe".to_string());
+
+foo(machine_1);
+foo(machine_2);
+foo(machine_3);
+
+}
+```
+
+Uma função também pode ser declarada para um `enum` usando a palavra-chave `impl`, que é semelhante a uma `struct`:
+
+```rust
+#![allow(unused_variables)]
+fn main() {
+    #[allow(dead_code)]
+    enum Machine {
+        Phone,
+        Adder(i8, i8),
+        Computer(String),
+}
+
+impl Machine{
+    fn foo(&self) {
+        match self {
+            Machine::Phone => println!("This is a phone"),
+            Machine::Adder(a, b) => println!("Sum: {}", a + b),
+            Machine::Computer(name) => println!("Name: {}", name),
+        }
+    }
+}
+
+let machine_1 = Machine::Phone;
+let machine_2 = Machine::Adder(3, 4);
+let machine_3 = Machine::Computer("Mainframe".to_string());
+
+machine_1.foo();
+machine_2.foo();
+machine_3.foo();
+}
+```
+
+**Fonte:** Whats is a enum in Rust? **Disponível em:** [educative](https://www.educative.io/answers/what-is-an-enum-in-rust)
