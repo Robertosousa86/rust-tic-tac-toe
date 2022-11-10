@@ -151,7 +151,7 @@ machine_3.foo();
 
 **Fonte:** Whats is a enum in Rust? **Disponível em:** [educative](https://www.educative.io/answers/what-is-an-enum-in-rust)
 
-- [ ] 1.2: Implementar um tipo de dado simples para representar o estado do jogo/tabuleiro
+- [x] 1.2: Implementar um tipo de dado simples para representar o estado do jogo/tabuleiro
 
 ### Solução
 
@@ -183,3 +183,5 @@ struct Board {
   ```
 
 A `struct` mais comum são aquelas que tem os seus campos definidos com os seus tipos, como a `struct` `Regular`, no exemplo acima.
+
+- [ ] Criar um tabuleiro
