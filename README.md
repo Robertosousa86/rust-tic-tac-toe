@@ -151,4 +151,35 @@ machine_3.foo();
 
 **Fonte:** Whats is a enum in Rust? **Disponível em:** [educative](https://www.educative.io/answers/what-is-an-enum-in-rust)
 
-- [] 1.2: Implementar um tipo de dado simples para representar o estado do jogo/tabuleiro
+- [ ] 1.2: Implementar um tipo de dado simples para representar o estado do jogo/tabuleiro
+
+### Solução
+
+Existem diferentes maneiras para resolver essa tarefa. Poderíamos utilizar um `array` 2d ou 1d, bidimensional ou unidimensional, respectivamente.
+Utilizaremos um `array` bidimensional para `Option<Player>`, que representa `Some(Player)` ou `None`, quando o espaço do tabuleiro estiver vazio. O `array` estará dentro de uma `struct`, que também irá conter qual o turno do player e se há algum vencedor. Isso permite a `struct` representar mais o estado do jogo do que simplesmente o tabuleiro.
+
+```rust
+struct Board {
+  grid:[[Option<Player>; 3]; 3],
+  current_turn: Player,
+  winner: Option<Player>,
+}
+```
+
+- **struct**
+  /
+  `Structs` são estruturas que declaram variáveis e seus tipos, que estão relacionadas ao contexto desse `Struct`. Existem 3 tipos de `structs`: `Structs` com campos nominados, `tuple struct` e `unit structs`.
+
+  ```rust
+  struct Regular {
+    field1: f32,
+    field2: String,
+    pub field3:bool
+  }
+
+  struct Tuple(u32, String);
+
+  struct Unit;
+  ```
+
+A `struct` mais comum são aquelas que tem os seus campos definidos com os seus tipos, como a `struct` `Regular`, no exemplo acima.
